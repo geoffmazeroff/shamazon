@@ -34,6 +34,7 @@
 - Set up a lightbox such that when the user clicks on the thumbnail, a larger image is shown
 - Check Lighthouse for accessibility score (508 compliance)
 - Add Redis for caching results from 3rd-party API (60 second expiry)
+- Create content for README.md so that others can run this app locally (test on another machine that this indeed works)
 
 # Future Items
 - Bootstrap for better UX (layout, colors)
