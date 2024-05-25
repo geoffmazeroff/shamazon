@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Shamazon")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78e6c366258caba526df1960624ecb9d7951ef31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1c20a7e9c26e760fd9e1eeac584289b452c5d97")]
 [assembly: System.Reflection.AssemblyProductAttribute("Shamazon")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Shamazon")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

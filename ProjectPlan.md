@@ -12,9 +12,9 @@
 - Use ChatGPT to explore names for this project
   - `I'm building a demo website that lists products for sale. Can you help me find a funny name for this website? What about some plays on Amazon.com where the goods are of suspicious origin.`
 - Create a GitHub repo with an MIT license
+- "File > New Project" a Razor page template project
 
 # To Do
-- "File > New Project" a Razor page template project
 - Start a `CHANGELOG.md` file
 - Implement a logger service (log to console for now)
 - Create data model for items returned from 3rd-party API
