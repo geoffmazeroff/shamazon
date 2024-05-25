@@ -1,4 +1,35 @@
-# Completed
+# Project Plan
+
+## To Do
+- Implement a logger service (log to console for now)
+- Build backend service to return hard-coded list
+- Add unit tests for backend logic
+- Create mock data service to generate data models
+- Wire up backend to depend on dependency-injected service
+- Have default service be the mock service
+- Main page should get all products and display in a table and searching based on a query string
+  - Need to determine which columns
+- Details page should display all fields for a single product
+- Add UI for dealing with null values on objects
+- Decide on approach and implement error handling from the backend (alerts, toast notifications)
+- Build out service that communicates with 3rd-party API; *note: figure out how to resolve name differences between JSON and models*
+- Decide on approach and implement error handling / validation for the 3rd-party API
+- Set up a lightbox such that when the user clicks on the thumbnail, a larger image is shown
+- Check Lighthouse for accessibility score (508 compliance)
+- Add Redis for caching results from 3rd-party API (60 second expiry)
+- Create content for README.md so that others can run this app locally (test on another machine that this indeed works)
+- Data cleaning on 3rd-party API data ingestion (e.g., `16GB` vs `16 GB`)
+- Playwright tests
+
+## Future Items
+- Bootstrap for better UX (layout, colors)
+- Pagination for main page
+- Sort by {ColumnName}
+- Search by fields other than title and description
+- Currency setting (i.e., assume raw data is in USD then allow conversion to other currencies such as DKK)
+- Deploy to Azure
+
+## Completed
 - Explore data returned from https://dummyjson.com/products
   - Verify lookup with `/products/{id}`
   - Verify search with `/products/search?q={searchString}`
@@ -13,32 +44,5 @@
   - `I'm building a demo website that lists products for sale. Can you help me find a funny name for this website? What about some plays on Amazon.com where the goods are of suspicious origin.`
 - Create a GitHub repo with an MIT license
 - "File > New Project" a Razor page template project
-
-# To Do
 - Start a `CHANGELOG.md` file
-- Implement a logger service (log to console for now)
-- Create data model for items returned from 3rd-party API
-- Build backend service to return hard-coded list
-- Add unit tests for backend logic
-- Create mock data service to generate data models
-- Wire up backend to depend on dependency-injected service
-- Have default service be the mock service
-- Main page should get all products and display in a table and searching based on a query string
-  - REQUIREMENTS HERE (e.g., input sanitization)
-- Decide on approach and implement error handling from the backend (alerts, toast notifications)
-- Build out service that communicates with 3rd-party API
-- Decide on approach and implement error handling / validation for the 3rd-party API
-- Set up a lightbox such that when the user clicks on the thumbnail, a larger image is shown
-- Check Lighthouse for accessibility score (508 compliance)
-- Add Redis for caching results from 3rd-party API (60 second expiry)
-- Create content for README.md so that others can run this app locally (test on another machine that this indeed works)
-- Data cleaning on 3rd-party API data ingestion (e.g., `16GB` vs `16 GB`)
-- Playwright tests
-
-# Future Items
-- Bootstrap for better UX (layout, colors)
-- Pagination for main page
-- Sort by {ColumnName}
-- Search by fields other than title and description
-- Currency setting (i.e., assume raw data is in USD then allow conversion to other currencies such as DKK)
-- Deploy to Azure
+- Create data models for items returned from 3rd-party API
