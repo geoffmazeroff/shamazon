@@ -5,8 +5,28 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Shamazon Products</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Rating</th>
+                <th>Preview</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.ProductViewModels)
+            {
+                <tr>
+                    <td>@product.Title</td>
+                    <td>@product.Category</td>
+                    <td>@product.Price</td>
+                    <td>@product.Rating</td>
+                    <td><img src="data:image/png;base64,@(Convert.ToBase64String(product.ThumbnailData))" alt="Product Image"></td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-
-@* <img src="data:image/png;base64,@(Convert.ToBase64String(Model.Product.ThumbnailData))" alt="Product Image"> *@
