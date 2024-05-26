@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [0.3.0] - 2024-05-25
+### Added
+- Mock data service to generate index listing view models
+
 ## [0.2.0] - 2024-05-25
 ### Added
 - Console logger service
