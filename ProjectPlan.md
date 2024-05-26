@@ -1,7 +1,6 @@
 # Project Plan
 
 ## To Do
-- Implement a logger service (log to console for now)
 - Build backend service to return hard-coded list
 - Add unit tests for backend logic
 - Create mock data service to generate data models
@@ -46,3 +45,4 @@
 - "File > New Project" a Razor page template project
 - Start a `CHANGELOG.md` file
 - Create data models for items returned from 3rd-party API
+- Implement a logger service (log to console for now)
