@@ -1,6 +1,7 @@
 # Project Plan
 
 ## To Do
+- Create a response model for the listing page
 - Build backend service to return hard-coded list
 - Add unit tests for backend logic
 - Create mock data service to generate data models
