@@ -1,3 +1,59 @@
 @page "{id:int?}"
 @model Shamazon.Pages.ProductDetails
 
+<div>
+    <h2>@Model.Product.Title</h2>
+    <p>Made by @Model.Product.Brand</p>
+    <p>@Model.Product.Description</p>
+    <p>Category: @Model.Product.Category</p>
+    
+    <!-- Use formatters -->
+    <p>Price: @Model.Product.Price</p>
+    <p>Discount: @Model.Product.DiscountPercentage</p>
+
+    <h4>Rating and Reviews</h4>
+    <p>Overall: @Model.Product.Rating out of 5</p>
+    <div>
+        <h5>Reviews</h5>
+        @foreach (var review in Model.Product.Reviews)
+        {
+            <p>Rating: @review.Rating out of 5</p>
+            <p>Comment: @review.Comment</p>
+            <p>By: @review.ReviewerName (@review.ReviewerEmail)</p>
+            <p>Date Reviewed: @review.Date</p>
+        }
+    </div>
+    
+    <h4>Product Images</h4>
+    @foreach (var image in Model.Product.ImageUrls)
+    {
+        <p>URL: @image</p>
+        @* <img src="data:image/png;base64,@(Convert.ToBase64String(image.Data))" alt="Product Image"> *@
+    }
+    
+    <h4>Availability and Shipping</h4>
+    <p>(@Model.Product.AvailabilityStatus)</p>
+    <p>We have @Model.Product.Stock in stock. You must order at least @Model.Product.MinimumOrderQuantity.</p>
+    <p>Shipping: @Model.Product.ShippingInformation</p>
+    <p>Warranty: @Model.Product.WarrantyInformation</p>
+    <p>Return Policy: @Model.Product.ReturnPolicy</p>
+    
+    <h4>Specifications</h4>
+    <p>Weight: @Model.Product.Weight lbs</p>
+    <p>Dimensions: @Model.Product.Dimensions.Width (w) in. x @Model.Product.Dimensions.Height (h) in. x @Model.Product.Dimensions.Depth (d) in.</p>
+    
+    <h4>Product Details</h4>
+    <p>SKU: @Model.Product.Sku</p>
+    <p>Tags: 
+        @foreach (var tag in Model.Product.Tags)
+         {
+             @tag<br />
+         }
+    </p>
+    
+    <h4>Metadata</h4>
+    <p>Created At: @Model.Product.Metadata.CreatedAt</p>
+    <p>Updated At: @Model.Product.Metadata.UpdatedAt</p>
+    <p>Barcode: @Model.Product.Metadata.Barcode</p>
+    <p>QR Code URL: @Model.Product.Metadata.QrCodeUrl</p>
+</div>

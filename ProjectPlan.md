@@ -2,7 +2,6 @@
 
 ## To Do
 - MVP details page should display all fields for a single product
-- Create mock data service to generate full product data models
 - Improved details page using Bootstrap
 - Figure out how to change injected service based on environment
 - Add search functionality
@@ -48,3 +47,4 @@
 - Implement a logger service (log to console for now)
 - Create a response model for the listing page
 - Build backend service to return hard-coded list for the index page
+- Create mock data service to generate full product data models
