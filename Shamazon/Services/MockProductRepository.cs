@@ -3,6 +3,9 @@ using Shamazon.Models;
 
 namespace Shamazon.Services;
 
+/// <summary>
+/// A mock implementation of the IProductRepository interface for testing purposes.
+/// </summary>
 public class MockProductRepository : IProductRepository
 {
     private readonly List<ProductViewModel> _demoProductViewModels;
@@ -65,7 +68,7 @@ public class MockProductRepository : IProductRepository
 
     public async Task<Product?> GetProductByIdAsync(int id)
     {
-        // Simulate a product not found by only returning the demo product for IDs less than 5
+        // Simulate a product not found by only returning the single demo product for IDs less than 5
         if (id < 5)
         {
             return await Task.FromResult(_demoProduct);
