@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [0.5.0] - 2024-05-27
+### Added
+- Mock data produced by hard-coded JSON parsing for a single product
+- Separate DTOs for product components represented in JSON
+- DTO extensions to convert from DTO to bound data models
+
 ## [0.4.0] - 2024-05-27
 ### Added
 - Product details page to display all fields for a single product

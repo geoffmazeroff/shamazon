@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Shamazon.Dto;
 using Shamazon.Interfaces;
 using Shamazon.Models;
 
@@ -102,10 +103,22 @@ public class MockProductRepository : IProductRepository
     private void CreateProductFromJson()
     {
         var jsonString = GetTwoProductsAsJson();
+
+        var newString = """
+                        {
+                          "dimensions": {
+                            "width": 23.17,
+                            "height": 14.43,
+                            "depth": 28.01
+                          }
+                        }
+                        """;
        
+        var dimension = JsonSerializer.Deserialize<Dictionary<string, DimensionWrapper>>(newString);
+        
         var products = JsonSerializer.Deserialize<ProductListWrapper>(jsonString);
 
-        _demoProduct = products?.Products?.FirstOrDefault();
+        _demoProduct = products.Products.First().FromProductDto();
     }
     
     private static string GetTwoProductsAsJson()
