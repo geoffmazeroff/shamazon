@@ -41,8 +41,8 @@ public class MockProductRepository : IProductRepository
             AvailabilityStatus = "In Stock",
             Reviews =
             [
-                new Review { Rating = 5, Comment = "Great product!" },
-                new Review { Rating = 4, Comment = "Good value for the price." }
+                new Review { Rating = 5, Comment = "Great product!", ReviewerName = "Bob", ReviewerEmail = "bob@shamazon.com" },
+                new Review { Rating = 4, Comment = "Good value for the price.", ReviewerName = "Greta", ReviewerEmail = "greta@shamazon.com" }
             ],
             ReturnPolicy = "30 days return policy",
             MinimumOrderQuantity = 1,

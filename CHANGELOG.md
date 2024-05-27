@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [0.4.0] - 2024-05-27
+### Added
+- Product details page to display all fields for a single product
+- Mock data service to generate product details
+
+### Changed
+- Index page now displays product details when a product is clicked
+
 ## [0.3.0] - 2024-05-25
 ### Added
 - Mock data service to generate index listing view models

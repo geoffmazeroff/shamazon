@@ -20,7 +20,9 @@
             @foreach (var product in Model.ProductViewModels)
             {
                 <tr>
-                    <td>@product.Title</td>
+                    @* Link the product title to the product details page given the product ID *@
+                    
+                    <td><a asp-page="./ProductDetails" asp-route-id="@product.Id">@product.Title</a></td>
                     <td>@product.Category</td>
                     <td>@product.Price</td>
                     <td>@product.Rating</td>
