@@ -9,5 +9,5 @@ public interface IProductRepository
 {
     Task<List<ProductViewModel>> GetProductViewModelsAsync();
     
-    Task<Product> GetProductByIdAsync(int id);
+    Task<Product?> GetProductByIdAsync(int id);
 }
