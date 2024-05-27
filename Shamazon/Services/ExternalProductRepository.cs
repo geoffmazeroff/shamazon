@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Shamazon.Dto;
 using Shamazon.Interfaces;
 using Shamazon.Models;
 
@@ -44,16 +45,22 @@ public class ExternalProductRepository : IProductRepository
         var client = new HttpClient();
         var response = await client.GetAsync(ProductApiUrl);
         var json = await response.Content.ReadAsStringAsync();
-        var products = JsonSerializer.Deserialize<List<Product>>(json);
+        var products = JsonSerializer.Deserialize<ProductListWrapper>(json);
         if (products is null)
         {
             _logger.LogError("LoadProductsAsync(): Null deserialization from {Source}", ProductApiUrl);
             throw new InvalidOperationException("Failed to load products from external source.");
         }
 
-        foreach (var product in products)
+        // No products leaves the dictionary in a clean state. The UI will handle.
+        if (products.Products is null)
         {
-            ProductCache[product.Id] = product;
+            return;
+        }
+        
+        foreach (var product in products.Products!)
+        {
+            ProductCache[product.Id] = product.FromProductDto();
         }
     }
 }

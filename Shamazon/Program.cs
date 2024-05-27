@@ -8,7 +8,8 @@ builder.Services.AddRazorPages();
 
 // Have the logger be the console
 builder.Logging.AddConsole();
-builder.Services.AddSingleton<IProductRepository, MockProductRepository>();
+//builder.Services.AddSingleton<IProductRepository, MockProductRepository>();
+builder.Services.AddSingleton<IProductRepository, ExternalProductRepository>();
 builder.Services.AddSingleton<IImageLoader, ExternalImageLoader>();
 
 var app = builder.Build();

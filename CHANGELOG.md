@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [0.6.0] - 2024-05-27
+### Changed
+- Product listing is based on 3rd-party API data
+- Product details page uses data from 3rd-party API
+
 ## [0.5.0] - 2024-05-27
 ### Added
 - Mock data produced by hard-coded JSON parsing for a single product

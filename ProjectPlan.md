@@ -1,14 +1,13 @@
 # Project Plan
 
 ## To Do
-- Map the JSON wrapper instance to the Product model the UI binds to
-- Build out service that communicates with 3rd-party API
+- Improve format of index page
+- Add search functionality to index page
 - Improved product details page
   - Set up a lightbox such that when the user clicks on the thumbnail, a larger image is shown
   - Render images
   - Handle missing field values
   - What happens if a product ID is not found?
-- Add search functionality to index page
 - Add error handling 
   - Page models need try-catches around service calls
   - Decide on approach and implement error handling from the backend (alerts, toast notifications)
@@ -57,3 +56,5 @@
 - MVP details page should display all fields for a single product
 - Create image loader service
 - Modify mock product repo to take a constant JSON string with 2 products and convert that into two product models
+- Map the JSON wrapper instance to the Product model the UI binds to
+- Build out service that communicates with 3rd-party API
