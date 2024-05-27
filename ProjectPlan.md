@@ -1,8 +1,9 @@
 # Project Plan
 
 ## To Do
+- MVP details page should display all fields for a single product
 - Create mock data service to generate full product data models
-- Details page should display all fields for a single product
+- Improved details page using Bootstrap
 - Figure out how to change injected service based on environment
 - Add search functionality
 - Error handling everywhere (preferably gracefully)
@@ -16,7 +17,7 @@
 - Add Redis for caching results from 3rd-party API (60 second expiry); used meta.updatedAt to determine when to refresh cache
 - Create content for README.md so that others can run this app locally (test on another machine that this indeed works)
 - Data cleaning on 3rd-party API data ingestion (e.g., `16GB` vs `16 GB`)
-- Playwright tests
+- Create Playwright tests
 
 ## Future Items
 - Bootstrap for better UX (layout, colors)
@@ -25,6 +26,7 @@
 - Search by fields other than title and description
 - Currency setting (i.e., assume raw data is in USD then allow conversion to other currencies such as DKK)
 - Deploy to Azure
+- It would be useful if the 3rd-party had more granular endpoints (e.g., something to get the headers for a product, then another to get the details)
 
 ## Completed
 - Explore data returned from https://dummyjson.com/products

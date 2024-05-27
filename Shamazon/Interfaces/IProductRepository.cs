@@ -7,7 +7,7 @@ namespace Shamazon.Interfaces;
 /// </summary>
 public interface IProductRepository
 {
-    List<ProductViewModel> GetProductViewModels();
+    Task<List<ProductViewModel>> GetProductViewModelsAsync();
     
-    Product GetProductById(int id);
+    Task<Product> GetProductByIdAsync(int id);
 }

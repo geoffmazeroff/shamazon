@@ -14,17 +14,17 @@ public class MockProductRepository : IProductRepository
         
         _demoProductViewModels = new List<ProductViewModel>
         {
-            new() { Title = "Product 1", Category = "Category 1", Price = 1.00m, Rating = 1.0m, ThumbnailData = imageBytes},
-            new() { Title = "Product 2", Category = "Category 2", Price = 2.00m, Rating = 2.0m, ThumbnailData = imageBytes},
+            new() { Id = 1, Title = "Product 1", Category = "Category 1", Price = 1.00m, Rating = 1.0m, ThumbnailData = imageBytes},
+            new() { Id = 2, Title = "Product 2", Category = "Category 2", Price = 2.00m, Rating = 2.0m, ThumbnailData = imageBytes},
         };
     }
     
-    public List<ProductViewModel> GetProductViewModels()
+    public async Task<List<ProductViewModel>> GetProductViewModelsAsync()
     {
-        return _demoProductViewModels;
+        return await Task.FromResult(_demoProductViewModels);
     }
 
-    public Product GetProductById(int id)
+    public async Task<Product> GetProductByIdAsync(int id)
     {
         throw new NotImplementedException();
     }

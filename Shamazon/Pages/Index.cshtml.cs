@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shamazon.Interfaces;
 using Shamazon.Models;
@@ -17,8 +18,9 @@ public class IndexModel : PageModel
         _productRepository = productRepository;
     }
 
-    public void OnGet()
+    public async Task<IActionResult> OnGetAsync()
     {
-        ProductViewModels = _productRepository.GetProductViewModels();
+        ProductViewModels = await _productRepository.GetProductViewModelsAsync();
+        return Page();
     }
 }
