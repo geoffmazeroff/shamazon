@@ -15,5 +15,15 @@ public class ProductViewModel
     public string? Category { get; set; }
     public decimal Price { get; set; }
     public decimal Rating { get; set; }
+    
+    /// <summary>
+    /// The bytes for the image. 
+    /// </summary>
+    /// <remarks>
+    /// There's likely a better way to handle this object model (Liskov substitution principle).
+    /// The URL string is retrieved first, then the image data is loaded. This byte array isn't
+    /// populated until later.
+    /// </remarks>
     public byte[]? ThumbnailData { get; set; }
+    public string? ThumbnailUrl { get; set; }
 }

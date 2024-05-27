@@ -12,6 +12,8 @@ public class ProductDetails : PageModel
     public ProductDetails(IProductRepository productRepository)
     {
         _productRepository = productRepository;
+
+        Product = new Product();
     }
     
     public Product Product { get; set; }
