@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Shamazon.Models;
 
 /// <summary>
@@ -5,8 +7,15 @@ namespace Shamazon.Models;
 /// </summary>
 public class ProductMetadata
 {
+    [JsonPropertyName("createdAt")]
     public DateTime CreatedAt { get; set; }
+    
+    [JsonPropertyName("updatedAt")]
     public DateTime UpdatedAt { get; set; }
+    
+    [JsonPropertyName("barcode")]
     public string? Barcode { get; set; }
+    
+    [JsonPropertyName("qrCode")]
     public string? QrCodeUrl { get; set; }
 }

@@ -1,7 +1,8 @@
 # Project Plan
 
 ## To Do
-- Build out service that communicates with 3rd-party API; *note: figure out how to resolve name differences between JSON and models*
+- Map the JSON wrapper instance to the Product model the UI binds to
+- Build out service that communicates with 3rd-party API
 - Improved product details page
   - Set up a lightbox such that when the user clicks on the thumbnail, a larger image is shown
   - Render images
@@ -9,6 +10,7 @@
   - What happens if a product ID is not found?
 - Add search functionality to index page
 - Add error handling 
+  - Page models need try-catches around service calls
   - Decide on approach and implement error handling from the backend (alerts, toast notifications)
   - In C# code
   - Decide on approach and implement error handling / validation for the 3rd-party API
@@ -53,3 +55,5 @@
 - Build backend service to return hard-coded list for the index page
 - Create mock data service to generate full product data models
 - MVP details page should display all fields for a single product
+- Create image loader service
+- Modify mock product repo to take a constant JSON string with 2 products and convert that into two product models

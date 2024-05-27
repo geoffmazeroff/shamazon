@@ -2,10 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Shamazon.Models;
 
-/// <summary>
-/// Model representing a product in the Shamazon system.
-/// </summary>
-public class Product
+public class ProductJsonWrapper
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
@@ -44,7 +41,7 @@ public class Product
     public int Weight { get; set; }
     
     [JsonPropertyName("dimensions")]
-    public Dimension Dimensions { get; set; }
+    public Dictionary<string, Dimension> Dimensions { get; set; }
     
     [JsonPropertyName("warrantyInformation")]
     public string? WarrantyInformation { get; set; }
@@ -56,7 +53,7 @@ public class Product
     public string? AvailabilityStatus { get; set; }
     
     [JsonPropertyName("reviews")]
-    public List<Review> Reviews { get; set; } = [];
+    public ReviewListWrapper Reviews { get; set; }
     
     [JsonPropertyName("returnPolicy")]
     public string? ReturnPolicy { get; set; }
@@ -65,7 +62,7 @@ public class Product
     public int MinimumOrderQuantity { get; set; }
     
     [JsonPropertyName("meta")]
-    public ProductMetadata? Metadata { get; set; }
+    public Dictionary<string, ProductMetadata> Metadata { get; set; }
     
     [JsonPropertyName("images")]
     public List<string> ImageUrls { get; set; } = [];
@@ -73,3 +70,15 @@ public class Product
     [JsonPropertyName("thumbnail")]
     public string? ThumbnailUrl { get; set; }
 }
+
+public class ReviewListWrapper
+{
+    [JsonPropertyName("reviews")]  
+    public List<Review>? Reviews { get; set; }
+}
+
+public class ProductListWrapper
+{
+    [JsonPropertyName("products")]
+    public List<Product>? Products { get; set; }
+} 
