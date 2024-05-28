@@ -1,22 +1,20 @@
 # Project Plan
 
 ## To Do
-- Fix the carousel image size (too large)
-- Improved product details page
-  - What happens if a product ID is not found?
-  - Improve the visual layout of the product details page
-- Address any compiler warnings or other IDE suggestions
+- What happens if a product ID is not found?
 - Sort header returns by rating; add text on page to mention this
-- Check Lighthouse for accessibility score (508 compliance)
-- Create content for README.md so that others can run this app locally (test on another machine that this indeed works)
+- Address any compiler warnings or other IDE suggestions
 - Add error handling 
   - Handle missing field values on product details page
   - Page models need try-catches around service calls
   - Decide on approach and implement error handling from the backend (alerts, toast notifications)
   - In C# code
   - Decide on approach and implement error handling / validation for the 3rd-party API
+  - Add more information logging messages
 - Add unit tests
+- Check Lighthouse for accessibility score (508 compliance)
 - Figure out how to change injected repository service based on environment
+- Create content for README.md so that others can run this app locally (test on another machine that this indeed works)
 
 ## Future Items
 - Pagination for main page
@@ -27,6 +25,7 @@
 - Deploy to Azure (manually)
 - Add a CI/CD pipeline (ideas: containerize, generate Software Bill of Materials (SBOM))
 - Add data cleaning on 3rd-party API data ingestion (e.g., `16GB` vs `16 GB`)
+- There are some business rules the UI could show (e.g., 5 in stock combined with a minimum buy of 24 means the user can't do anything)
 - Create Playwright tests
 - It would be useful if the 3rd-party had more granular endpoints (e.g., one to get the headers for a product and another to get the details)
 - Add an actual cache (e.g., Redis) for caching results from 3rd-party API (30 second expiry); used meta.updatedAt to determine when to refresh cache
@@ -62,3 +61,5 @@
 - Add cache duration of 30 seconds for product data to support faster load times
 - Implement search functionality 
 - Set up a Bootstrap carousel for the product images
+- Fix the carousel image size (too large)
+- Improve the visual layout of the product details page

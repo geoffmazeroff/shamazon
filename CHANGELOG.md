@@ -1,5 +1,12 @@
 # CHANGELOG
 
+### [0.8.0] - 2024-05-28
+### Changed
+- Improved layout of the product details page
+
+### Fixed
+- Carousel size reduced to fit better within the product details page
+
 ### [0.7.0] - 2024-05-27
 ### Added
 - Cache duration of 30 seconds for product data

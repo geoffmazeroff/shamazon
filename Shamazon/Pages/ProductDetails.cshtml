@@ -70,9 +70,18 @@
             <p><b>About this item</b></p>
             <p>@Model.Product.Description</p>        
         </div>
+        
+        <!-- Shipping and warranty information -->
         <div class="col-3">
             <div class="border border-1 rounded" style="padding: 0.5em">
-                <p><b>@Model.Product.AvailabilityStatus</b></p>
+                <p class="@(Model.Product.AvailabilityStatus switch
+                          {
+                              "In Stock" => "text-success",
+                              "Low Stock" => "text-warning",
+                              _ => "text-primary"
+                          })">
+                    <b>@Model.Product.AvailabilityStatus</b>
+                </p>
                 <p>We have @Model.Product.Stock in stock. You must order at least @Model.Product.MinimumOrderQuantity.</p>
                 <ul>
                     <li>@Model.Product.ShippingInformation</li>
@@ -82,32 +91,60 @@
             </div>
         </div>
     </div>
+ 
+    <hr />
     
-    <h4>Rating and Reviews</h4>
-    <div>
-        <h5>Reviews</h5>
-        @foreach (var review in Model.Product.Reviews)
-        {
-            <p>Rating: @review.Rating out of 5</p>
-            <p>Comment: @review.Comment</p>
-            <p>By: @review.ReviewerName (@review.ReviewerEmail)</p>
-            <p>Date Reviewed: @review.Date</p>
-        }
+    <div class="row">
+        <div class="col-4">
+            <h4>Product Details</h4>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th scope="row">SKU</th>
+                    <td>@Model.Product.Sku</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tags</th>
+                    <td>@foreach (var tag in Model.Product.Tags)
+                        {
+                            <span class="badge bg-secondary">@tag</span>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Created At</th>
+                    <td>@Model.Product.Metadata!.CreatedAt</td>
+                </tr>
+                <tr>
+                    <th scope="row">Updated At</th>
+                    <td>@Model.Product.Metadata.UpdatedAt</td>
+                </tr>
+                <tr>
+                    <th scope="row">Barcode</th>
+                    <td>@Model.Product.Metadata.Barcode</td>
+                </tr>
+                <tr>
+                    <th scope="row">QR Code</th>
+                    <td><img src="@Model.Product.Metadata.QrCodeUrl" class="img-thumbnail" alt="Product QR Code" /></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="col-8">
+            <h4>Reviews</h4>
+            <div class="d-flex flex-row flex-wrap">
+                @foreach (var review in Model.Product.Reviews)
+                {
+                    <div class="card me-2 mb-2 p-3" style="width: 18rem">
+                        
+                        <h5 class="card-title">⭐ @review.Rating out of 5</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@review.Date</h6>
+                        <p class="card-text">@review.Comment</p>
+                        <a href="mailto:@review.ReviewerEmail" class="card-link">@review.ReviewerName</a>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
-
-    <h4>Availability and Shipping</h4>
-    <h4>Product Details</h4>
-    <p>SKU: @Model.Product.Sku</p>
-    <p>Tags:
-        @foreach (var tag in Model.Product.Tags)
-        {
-            @tag<br/>
-        }
-    </p>
-
-    <h4>Metadata</h4>
-    <p>Created At: @Model.Product.Metadata.CreatedAt</p>
-    <p>Updated At: @Model.Product.Metadata.UpdatedAt</p>
-    <p>Barcode: @Model.Product.Metadata.Barcode</p>
-    <p>QR Code URL: @Model.Product.Metadata.QrCodeUrl</p>
 </div>
