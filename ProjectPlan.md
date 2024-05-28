@@ -63,3 +63,4 @@
 - Set up a Bootstrap carousel for the product images
 - Fix the carousel image size (too large)
 - Improve the visual layout of the product details page
+- Improve UX for when search returns no results

@@ -4,9 +4,11 @@
     ViewData["Title"] = "Products";
 }
 
-<div class="text-center">
-    <table class="table">
-        <thead>
+@if (Model.ProductViewModels.Any())
+{
+    <div class="text-center">
+        <table class="table">
+            <thead>
             <tr>
                 <th>Preview</th>
                 <th>Title</th>
@@ -14,16 +16,17 @@
                 <th>Price</th>
                 <th>Rating</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @foreach (var product in Model.ProductViewModels)
             {
                 <tr>
                     @* Link the product title to the product details page given the product ID *@
-                    <td><a asp-page="./ProductDetails" asp-route-id="@product.Id">
-                        <img src="data:image/png;base64,@Convert.ToBase64String(product.ThumbnailData!)" 
-                             alt="Product Image - @product.Title"
-                             class="img-thumbnail" style="max-height: 100px">
+                    <td>
+                        <a asp-page="./ProductDetails" asp-route-id="@product.Id">
+                            <img src="data:image/png;base64,@Convert.ToBase64String(product.ThumbnailData!)"
+                                 alt="Product Image - @product.Title"
+                                 class="img-thumbnail" style="max-height: 100px">
                         </a></td>
                     <td><a asp-page="./ProductDetails" asp-route-id="@product.Id">@product.Title</a></td>
                     <td>@product.Category</td>
@@ -31,6 +34,19 @@
                     <td>@product.Rating</td>
                 </tr>
             }
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="d-flex justify-content-center">
+        <div class="alert alert-warning col-4" role="alert">
+            <p>Hmmm... It seems there are no products to display.</p>
+            <ul>
+                <li>Try searching for something else.</li>
+                <li><a asp-page="./Index">Remove the search filter.</a></li>
+            </ul>
+        </div>
+    </div>
+}

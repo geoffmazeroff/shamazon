@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### [0.9.0] - 2024-05-28
+### Added
+- Alert if no results were returned from search
+
 ### [0.8.0] - 2024-05-28
 ### Changed
 - Improved layout of the product details page
