@@ -10,6 +10,8 @@ public class ExternalProductRepository : IProductRepository
     // Temporary solution to cache products given the database of products
     // doesn't live on the same server as the application.
     protected Dictionary<int, Product> ProductCache { get; } = new();
+    protected DateTime CacheExpiration { get; set; } = DateTime.MinValue;
+    private const int CacheDurationSeconds = 30;
 
     private const string ProductApiUrl = "https://dummyjson.com/products";
     private readonly ILogger<ExternalProductRepository> _logger;
@@ -19,11 +21,11 @@ public class ExternalProductRepository : IProductRepository
         _logger = logger;
     }
     
-    public async Task<List<ProductViewModel>> GetProductViewModelsAsync()
+    public async Task<List<ProductViewModel>> GetProductViewModelsAsync(string search = "")
     {
-        // The 3rd-party API doesn't support getting just product headers, so we need to load all products.
         await LoadProductsAsync();
-        
+
+        // The 3rd-party API doesn't support getting just product headers, so we need to load all products.
         return ProductCache.Values.Select(p => new ProductViewModel
         {
             Id = p.Id,
@@ -37,11 +39,21 @@ public class ExternalProductRepository : IProductRepository
 
     public async Task<Product?> GetProductByIdAsync(int id)
     {
+        await LoadProductsAsync();
+        
         return await Task.FromResult(ProductCache[id]);
     }
     
     private async Task LoadProductsAsync()
     {
+        var timeUntilCacheLoad = CacheExpiration - DateTime.UtcNow;
+        _logger.LogInformation("Time until cache gets refreshed: {TimeUntilCacheReload} s; cache expires on {CacheExpireDateTime}", timeUntilCacheLoad.TotalSeconds, CacheExpiration);
+        if (timeUntilCacheLoad.TotalSeconds >= 0)
+        {
+            return;
+        }
+        
+        _logger.LogInformation("Time since last cache refresh ({TimeSinceLastLoad} s) triggered reload", timeUntilCacheLoad.TotalSeconds);
         var client = new HttpClient();
         var response = await client.GetAsync(ProductApiUrl);
         var json = await response.Content.ReadAsStringAsync();
@@ -62,5 +74,7 @@ public class ExternalProductRepository : IProductRepository
         {
             ProductCache[product.Id] = product.FromProductDto();
         }
+
+        CacheExpiration = DateTime.UtcNow + TimeSpan.FromSeconds(CacheDurationSeconds);
     }
 }

@@ -1,5 +1,8 @@
 @page "{id:int?}"
 @model Shamazon.Pages.ProductDetails
+@{
+    ViewData["Title"] = @Model.Product.Title;
+}
 
 <div>
     <h2>@Model.Product.Title</h2>

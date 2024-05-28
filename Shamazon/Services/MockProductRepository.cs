@@ -23,7 +23,7 @@ public class MockProductRepository : IProductRepository
         CreateProductFromJson();
     }
   
-    public async Task<List<ProductViewModel>> GetProductViewModelsAsync()
+    public async Task<List<ProductViewModel>> GetProductViewModelsAsync(string search = "")
     {
         return await Task.FromResult(_demoProductViewModels);
     }

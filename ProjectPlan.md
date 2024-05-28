@@ -17,7 +17,6 @@
 - Create content for README.md so that others can run this app locally (test on another machine that this indeed works) 
 - Add unit tests
 - Figure out how to change injected service based on environment
-- Add Redis for caching results from 3rd-party API (60 second expiry); used meta.updatedAt to determine when to refresh cache
 
 ## Future Items
 - Pagination for main page
@@ -30,6 +29,7 @@
 - Add data cleaning on 3rd-party API data ingestion (e.g., `16GB` vs `16 GB`)
 - Create Playwright tests
 - It would be useful if the 3rd-party had more granular endpoints (e.g., one to get the headers for a product and another to get the details)
+- Add an actual cache (e.g., Redis) for caching results from 3rd-party API (30 second expiry); used meta.updatedAt to determine when to refresh cache
 
 ## Completed
 - Explore data returned from https://dummyjson.com/products
@@ -59,3 +59,4 @@
 - Build out service that communicates with 3rd-party API
 - Improve format of index page (thumbnails use Bootstrap class and are clickable)
 - Add navbar with search functionality to index page
+- Add cache duration of 30 seconds for product data to support faster load times
