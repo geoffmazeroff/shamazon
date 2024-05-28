@@ -4,18 +4,86 @@
     ViewData["Title"] = @Model.Product.Title;
 }
 
-<div>
-    <h2>@Model.Product.Title</h2>
-    <p>Made by @Model.Product.Brand</p>
-    <p>@Model.Product.Description</p>
-    <p>Category: @Model.Product.Category</p>
+<div class="container" xmlns="http://www.w3.org/1999/html">
     
-    <!-- Use formatters -->
-    <p>Price: @Model.Product.Price</p>
-    <p>Discount: @Model.Product.DiscountPercentage</p>
-
+    <div class="row">
+        <!-- Product images -->
+        <div class="col-5">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @for (var i = 0; i < Model.Product.ImageUrls.Count; i++)
+                    {
+                        @if (i == 0)
+                        {
+                            <div class="carousel-item active">
+                                <img src=@Model.Product.ImageUrls[i] class="d-block w-100" alt="@(Model.Product.Title + "Image " + i)">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="carousel-item">
+                                <img src=@Model.Product.ImageUrls[i] class="d-block w-100" alt="@(Model.Product.Title + "Image " + i)">
+                            </div>
+                        }
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Basic product details -->
+        <div class="col-4">
+            <h2>@Model.Product.Title</h2>
+            <p>⭐ @Model.Product.Rating / 5 | 🗣️ @Model.Product.Reviews.Count reviews</p>
+            <hr />
+            <h3><sup>$</sup>@Math.Floor(Model.Product.Price)<sup>@(Math.Floor((Model.Product.Price - Math.Floor(Model.Product.Price)) * 100))</sup></h3>
+            <p><i>Discount of @(Model.Product.DiscountPercentage)%</i></p>
+            <hr />
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th scope="row">Brand</th>
+                    <td>@Model.Product.Brand</td>
+                </tr>
+                <tr>
+                    <th scope="row">Category</th>
+                    <td>@Model.Product.Category</td>
+                </tr>
+                <tr>
+                    <th scope="row">Dimensions</th>
+                    <td>(@Model.Product.Dimensions.Width)"W x (@Model.Product.Dimensions.Height)"H x (@Model.Product.Dimensions.Depth)"D</td>
+                </tr>
+                <tr>
+                    <th scope="row">Weight</th>
+                    <td>@Model.Product.Weight Pounds</td>
+                </tr>
+                </tbody>
+            </table>
+            <hr />
+            <p><b>About this item</b></p>
+            <p>@Model.Product.Description</p>        
+        </div>
+        <div class="col-3">
+            <div class="border border-1 rounded" style="padding: 0.5em">
+                <p><b>@Model.Product.AvailabilityStatus</b></p>
+                <p>We have @Model.Product.Stock in stock. You must order at least @Model.Product.MinimumOrderQuantity.</p>
+                <ul>
+                    <li>@Model.Product.ShippingInformation</li>
+                    <li>@Model.Product.WarrantyInformation</li>
+                    <li>@Model.Product.ReturnPolicy</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
     <h4>Rating and Reviews</h4>
-    <p>Overall: @Model.Product.Rating out of 5</p>
     <div>
         <h5>Reviews</h5>
         @foreach (var review in Model.Product.Reviews)
@@ -26,56 +94,17 @@
             <p>Date Reviewed: @review.Date</p>
         }
     </div>
-    
-    <h4>Product Images</h4>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            @for (var i=0; i < Model.Product.ImageUrls.Count; i++)
-            {
-                @if (i == 0)
-                {
-                    <div class="carousel-item active">
-                        <img src=@Model.Product.ImageUrls[i] class="d-block w-100" alt="@(Model.Product.Title + "Image " + i)">
-                    </div>
-                }
-                else
-                {
-                <div class="carousel-item">
-                    <img src=@Model.Product.ImageUrls[i] class="d-block w-100" alt="@(Model.Product.Title + "Image " + i)">
-                </div>
-                }
-            }
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    
+
     <h4>Availability and Shipping</h4>
-    <p>(@Model.Product.AvailabilityStatus)</p>
-    <p>We have @Model.Product.Stock in stock. You must order at least @Model.Product.MinimumOrderQuantity.</p>
-    <p>Shipping: @Model.Product.ShippingInformation</p>
-    <p>Warranty: @Model.Product.WarrantyInformation</p>
-    <p>Return Policy: @Model.Product.ReturnPolicy</p>
-    
-    <h4>Specifications</h4>
-    <p>Weight: @Model.Product.Weight lbs</p>
-    <p>Dimensions: @Model.Product.Dimensions.Width (w) in. x @Model.Product.Dimensions.Height (h) in. x @Model.Product.Dimensions.Depth (d) in.</p>
-    
     <h4>Product Details</h4>
     <p>SKU: @Model.Product.Sku</p>
-    <p>Tags: 
+    <p>Tags:
         @foreach (var tag in Model.Product.Tags)
-         {
-             @tag<br />
-         }
+        {
+            @tag<br/>
+        }
     </p>
-    
+
     <h4>Metadata</h4>
     <p>Created At: @Model.Product.Metadata.CreatedAt</p>
     <p>Updated At: @Model.Product.Metadata.UpdatedAt</p>
