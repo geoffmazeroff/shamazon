@@ -1,19 +1,18 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Products";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Shamazon Products</h1>
     <table class="table">
         <thead>
             <tr>
+                <th>Preview</th>
                 <th>Product Name</th>
                 <th>Category</th>
                 <th>Price</th>
                 <th>Rating</th>
-                <th>Preview</th>
             </tr>
         </thead>
         <tbody>
@@ -21,12 +20,15 @@
             {
                 <tr>
                     @* Link the product title to the product details page given the product ID *@
-                    
+                    <td><a asp-page="./ProductDetails" asp-route-id="@product.Id">
+                        <img src="data:image/png;base64,@Convert.ToBase64String(product.ThumbnailData!)" 
+                             alt="Product Image - @product.Title"
+                             class="img-thumbnail">
+                        </a></td>
                     <td><a asp-page="./ProductDetails" asp-route-id="@product.Id">@product.Title</a></td>
                     <td>@product.Category</td>
                     <td>@product.Price</td>
                     <td>@product.Rating</td>
-                    <td><img src="data:image/png;base64,@Convert.ToBase64String(product.ThumbnailData!)" alt="Product Image"></td>
                 </tr>
             }
         </tbody>

@@ -24,6 +24,9 @@ public class IndexModel : PageModel
 
     public async Task<IActionResult> OnGetAsync()
     {
+        var searchString = Request.Query["search"].ToString();
+        _logger.LogInformation("Found the following search string query: {QueryString}", searchString);
+
         ProductViewModels = await _productRepository.GetProductViewModelsAsync();
         
         // The thumbnails are URLs, so we need to load the image content.

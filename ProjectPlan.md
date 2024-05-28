@@ -1,8 +1,7 @@
 # Project Plan
 
 ## To Do
-- Improve format of index page
-- Add search functionality to index page
+- Implement search functionality
 - Improved product details page
   - Set up a lightbox such that when the user clicks on the thumbnail, a larger image is shown
   - Render images
@@ -58,3 +57,5 @@
 - Modify mock product repo to take a constant JSON string with 2 products and convert that into two product models
 - Map the JSON wrapper instance to the Product model the UI binds to
 - Build out service that communicates with 3rd-party API
+- Improve format of index page (thumbnails use Bootstrap class and are clickable)
+- Add navbar with search functionality to index page
