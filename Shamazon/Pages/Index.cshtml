@@ -23,7 +23,7 @@
                     <td><a asp-page="./ProductDetails" asp-route-id="@product.Id">
                         <img src="data:image/png;base64,@Convert.ToBase64String(product.ThumbnailData!)" 
                              alt="Product Image - @product.Title"
-                             class="img-thumbnail">
+                             class="img-thumbnail" style="max-height: 100px">
                         </a></td>
                     <td><a asp-page="./ProductDetails" asp-route-id="@product.Id">@product.Title</a></td>
                     <td>@product.Category</td>

@@ -1,6 +1,7 @@
 # Project Plan
 
 ## To Do
+- Fix the carousel image size (too large)
 - Improved product details page
   - What happens if a product ID is not found?
   - Improve the visual layout of the product details page
@@ -15,7 +16,7 @@
   - In C# code
   - Decide on approach and implement error handling / validation for the 3rd-party API
 - Add unit tests
-- Figure out how to change injected service based on environment
+- Figure out how to change injected repository service based on environment
 
 ## Future Items
 - Pagination for main page
