@@ -16,23 +16,21 @@ public class ProductDetails : PageModel
         Product = new Product();
     }
     
-    public Product Product { get; set; }
+    public Product? Product { get; set; }
+    public int? Id { get; set; }
     
     public async Task<IActionResult> OnGetAsync(int? id)
     {
+        Id = id;
         if (id is null)
         {
-            return NotFound();
+            Product = null;
+            return Page();
         }
         
-        // Get the product from the repository
-        var retrievedProduct = await _productRepository.GetProductByIdAsync(id.Value);
-        if (retrievedProduct is null)
-        {
-            return NotFound();
-        }
-        
-        Product = retrievedProduct;
+        // Get the product from the repository.
+        // Note: Null product condition is handled via the Razor page.
+        Product = await _productRepository.GetProductByIdAsync(id.Value);
         return Page();
     }
 }

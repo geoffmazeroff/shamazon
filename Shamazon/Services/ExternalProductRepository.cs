@@ -48,7 +48,11 @@ public class ExternalProductRepository : IProductRepository
     {
         await LoadProductsAsync();
         
-        return await Task.FromResult(ProductCache[id]);
+        if (!ProductCache.TryGetValue(id, out var product))
+        {
+            return null;
+        }
+        return await Task.FromResult(product);
     }
     
     private async Task LoadProductsAsync()

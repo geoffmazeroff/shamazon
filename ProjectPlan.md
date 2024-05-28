@@ -1,7 +1,6 @@
 # Project Plan
 
 ## To Do
-- What happens if a product ID is not found?
 - Sort header returns by rating; add text on page to mention this
 - Address any compiler warnings or other IDE suggestions
 - Add error handling 
@@ -64,3 +63,5 @@
 - Fix the carousel image size (too large)
 - Improve the visual layout of the product details page
 - Improve UX for when search returns no results
+- Handle product ID being missing from query string
+- Handle product ID not being found in the product list

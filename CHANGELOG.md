@@ -4,6 +4,9 @@
 ### Added
 - Alert if no results were returned from search
 
+### Fixed
+- User sees an appropriate message when no search results are found or if the ID is missing from the query string
+
 ### [0.8.0] - 2024-05-28
 ### Changed
 - Improved layout of the product details page
