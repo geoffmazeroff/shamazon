@@ -23,10 +23,10 @@ public class ExternalProductRepository : IProductRepository
     
     public async Task<List<ProductViewModel>> GetProductViewModelsAsync(string search = "")
     {
+        // The 3rd-party API doesn't support getting just product headers, so we need to load all products.
         await LoadProductsAsync();
 
-        // The 3rd-party API doesn't support getting just product headers, so we need to load all products.
-        return ProductCache.Values.Select(p => new ProductViewModel
+        var products = ProductCache.Values.Select(p => new ProductViewModel
         {
             Id = p.Id,
             Title = p.Title,
@@ -34,7 +34,14 @@ public class ExternalProductRepository : IProductRepository
             Price = p.Price,
             Rating = p.Rating,
             ThumbnailUrl = p.ThumbnailUrl
-        }).ToList();
+        });
+        
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            products = products.Where(p => p.Title.Contains(search, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return products.ToList();
     }
 
     public async Task<Product?> GetProductByIdAsync(int id)

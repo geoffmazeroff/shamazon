@@ -1,12 +1,12 @@
 # Project Plan
 
 ## To Do
-- Implement search functionality
 - Improved product details page
   - Set up a lightbox such that when the user clicks on the thumbnail, a larger image is shown
   - Render images
   - Handle missing field values
   - What happens if a product ID is not found?
+- Address any compiler warnings or other IDE suggestions
 - Add error handling 
   - Page models need try-catches around service calls
   - Decide on approach and implement error handling from the backend (alerts, toast notifications)
@@ -60,3 +60,4 @@
 - Improve format of index page (thumbnails use Bootstrap class and are clickable)
 - Add navbar with search functionality to index page
 - Add cache duration of 30 seconds for product data to support faster load times
+- Implement search functionality 

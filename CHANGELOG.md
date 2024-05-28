@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### [0.7.0] - 2024-05-27
+### Added
+- Cache duration of 30 seconds for product data
+- Support for searching by description on the main product page
+
 ## [0.6.0] - 2024-05-27
 ### Changed
 - Product listing is based on 3rd-party API data
