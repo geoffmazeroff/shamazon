@@ -2,19 +2,18 @@
 
 ## To Do
 - Improved product details page
-  - Set up a lightbox such that when the user clicks on the thumbnail, a larger image is shown
-  - Render images
-  - Handle missing field values
   - What happens if a product ID is not found?
+  - Improve the visual layout of the product details page
 - Address any compiler warnings or other IDE suggestions
+- Sort header returns by rating; add text on page to mention this
+- Check Lighthouse for accessibility score (508 compliance)
+- Create content for README.md so that others can run this app locally (test on another machine that this indeed works)
 - Add error handling 
+  - Handle missing field values on product details page
   - Page models need try-catches around service calls
   - Decide on approach and implement error handling from the backend (alerts, toast notifications)
   - In C# code
   - Decide on approach and implement error handling / validation for the 3rd-party API
-- Sort header returns by rating; add text on page to mention this
-- Check Lighthouse for accessibility score (508 compliance)
-- Create content for README.md so that others can run this app locally (test on another machine that this indeed works) 
 - Add unit tests
 - Figure out how to change injected service based on environment
 
@@ -61,3 +60,4 @@
 - Add navbar with search functionality to index page
 - Add cache duration of 30 seconds for product data to support faster load times
 - Implement search functionality 
+- Set up a Bootstrap carousel for the product images

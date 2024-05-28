@@ -4,6 +4,7 @@
 ### Added
 - Cache duration of 30 seconds for product data
 - Support for searching by description on the main product page
+- Image carousel on the product details page
 
 ## [0.6.0] - 2024-05-27
 ### Changed

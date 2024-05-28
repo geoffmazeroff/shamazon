@@ -28,11 +28,33 @@
     </div>
     
     <h4>Product Images</h4>
-    @foreach (var image in Model.Product.ImageUrls)
-    {
-        <p>URL: @image</p>
-        @* <img src="data:image/png;base64,@(Convert.ToBase64String(image.Data))" alt="Product Image"> *@
-    }
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @for (var i=0; i < Model.Product.ImageUrls.Count; i++)
+            {
+                @if (i == 0)
+                {
+                    <div class="carousel-item active">
+                        <img src=@Model.Product.ImageUrls[i] class="d-block w-100" alt="@(Model.Product.Title + "Image " + i)">
+                    </div>
+                }
+                else
+                {
+                <div class="carousel-item">
+                    <img src=@Model.Product.ImageUrls[i] class="d-block w-100" alt="@(Model.Product.Title + "Image " + i)">
+                </div>
+                }
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
     
     <h4>Availability and Shipping</h4>
     <p>(@Model.Product.AvailabilityStatus)</p>
