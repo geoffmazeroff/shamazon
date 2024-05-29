@@ -68,7 +68,7 @@ public class ExternalProductRepository : IProductRepository
         var client = new HttpClient();
         var response = await client.GetAsync(ProductApiUrl);
         var json = await response.Content.ReadAsStringAsync();
-        var products = JsonSerializer.Deserialize<ProductListWrapper>(json);
+        var products = JsonSerializer.Deserialize<ProductListJsonWrapper>(json);
         if (products is null)
         {
             _logger.LogError("LoadProductsAsync(): Null deserialization from {Source}", ProductApiUrl);

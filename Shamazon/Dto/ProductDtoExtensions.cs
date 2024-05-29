@@ -2,9 +2,17 @@ using Shamazon.Models;
 
 namespace Shamazon.Dto;
 
+/// <summary>
+/// Extension methods for mapping between DTOs and domain models.
+/// </summary>
 public static class ProductDtoExtensions
 {
-    public static Dimension FromDimensionDto(this DimensionWrapper wrapper)
+    /// <summary>
+    /// Maps a DimensionWrapper to a Dimension object.
+    /// </summary>
+    /// <param name="wrapper">The dimension DTO.</param>
+    /// <returns>The dimension model.</returns>
+    public static Dimension FromDimensionDto(this DimensionJsonWrapper wrapper)
     {
         return new Dimension
         {
@@ -14,6 +22,11 @@ public static class ProductDtoExtensions
         };
     }
     
+    /// <summary>
+    /// Maps a ProductMetadataWrapper to a ProductMetadata object.
+    /// </summary>
+    /// <param name="wrapper">The metadata DTO.</param>
+    /// <returns>The metadata model.</returns>
     public static ProductMetadata FromMetadataDto(this ProductMetadataWrapper wrapper)
     {
         return new ProductMetadata
@@ -25,6 +38,11 @@ public static class ProductDtoExtensions
         };
     }
     
+    /// <summary>
+    /// Maps a ReviewJsonWrapper to a Review object.
+    /// </summary>
+    /// <param name="wrapper">The review DTO.</param>
+    /// <returns>The review model.</returns>
     public static Review FromReviewDto(this ReviewJsonWrapper wrapper)
     {
         return new Review

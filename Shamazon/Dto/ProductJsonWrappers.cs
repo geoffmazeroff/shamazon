@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace Shamazon.Dto;
 
 /// <summary>
-/// Object model (DTO) for obtaining product data from JSON.
+/// DTO for obtaining product data from JSON.
 /// </summary>
 /// <remarks>
 /// This wrapper gets mapped to a data model that isn't dependent
@@ -48,7 +48,7 @@ public class ProductJsonWrapper
     public int Weight { get; set; }
     
     [JsonPropertyName("dimensions")]
-    public DimensionWrapper Dimensions { get; set; }
+    public DimensionJsonWrapper Dimensions { get; set; }
     
     [JsonPropertyName("warrantyInformation")]
     public string? WarrantyInformation { get; set; }
@@ -79,22 +79,13 @@ public class ProductJsonWrapper
 }
 
 /// <summary>
-/// Object model (DTO) for obtaining review data from JSON.
-/// </summary>
-public class ReviewsJsonWrapper
-{
-    [JsonPropertyName("reviews")]  
-    public List<ReviewJsonWrapper>? Reviews { get; set; }
-}
-
-/// <summary>
 /// Object model (DTO) for obtaining product list data from JSON.
 /// </summary>
 /// <remarks>
 /// This wrapper gets mapped to a data model that isn't dependent
 /// on how the data is ingested.
 /// </remarks>
-public class ProductListWrapper
+public class ProductListJsonWrapper
 {
     [JsonPropertyName("products")]
     public List<ProductJsonWrapper>? Products { get; set; }
@@ -126,7 +117,7 @@ public class ReviewJsonWrapper
 }
 
 /// <summary>
-/// Object model (DTO) for obtaining product metadata from JSON.
+/// DTO for obtaining product metadata from JSON.
 /// </summary>
 /// <remarks>
 /// This wrapper gets mapped to a data model that isn't dependent
@@ -148,13 +139,13 @@ public class ProductMetadataWrapper
 }
 
 /// <summary>
-/// Object model (DTO) for obtaining product dimensions from JSON.
+/// DTO for obtaining product dimensions from JSON.
 /// </summary>
 /// <remarks>
 /// This wrapper gets mapped to a data model that isn't dependent
 /// on how the data is ingested.
 /// </remarks>
-public class DimensionWrapper
+public class DimensionJsonWrapper
 {
     [JsonPropertyName("height")]
     public decimal Height { get; set; }

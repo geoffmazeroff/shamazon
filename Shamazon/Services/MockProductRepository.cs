@@ -104,7 +104,7 @@ public class MockProductRepository : IProductRepository
     private void CreateProductFromJson()
     {
         var jsonString = GetTwoProductsAsJson();
-        var products = JsonSerializer.Deserialize<ProductListWrapper>(jsonString);
+        var products = JsonSerializer.Deserialize<ProductListJsonWrapper>(jsonString);
 
         _demoProduct = products.Products.First().FromProductDto();
     }
