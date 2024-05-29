@@ -1,11 +1,7 @@
 # Project Plan
 
 ## To Do
-- Address any compiler warnings or other IDE suggestions
 - Add error handling 
-  - Handle missing field values on product details page
-  - Page models need try-catches around service calls
-  - Decide on approach and implement error handling from the backend (alerts, toast notifications)
   - In C# code
   - Decide on approach and implement error handling / validation for the 3rd-party API
   - Add more information logging messages
@@ -65,3 +61,6 @@
 - Handle product ID being absent from query string
 - Handle product ID not being found in the product list
 - Sort header returns by rating; add text on page to mention this
+- Address any compiler warnings or other IDE suggestions
+- Decision: Skip step of handling missing field values on product details page; missing information shows as blank which is good enough for MVP
+- Add try-catch logic around repository calls in page models; improve logging related to those exceptions

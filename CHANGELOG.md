@@ -1,5 +1,12 @@
 # CHANGELOG
 
+### [0.11.0] - 2024-05-28
+### Deprecated
+- Privacy policy page is no longer available
+
+### Fixed
+- Addressed compiler warnings and IDE suggestions for code changes
+
 ### [0.10.0] - 2024-05-28
 ### Changed
 - Product listing is sorted by product rating
