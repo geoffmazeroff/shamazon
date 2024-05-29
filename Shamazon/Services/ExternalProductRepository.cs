@@ -5,6 +5,10 @@ using Shamazon.Models;
 
 namespace Shamazon.Services;
 
+/// <summary>
+/// A service for loading products from an external API.
+/// </summary>
+/// <remarks>Methods throw exceptions that are handled elsewhere.</remarks>
 public class ExternalProductRepository : IProductRepository
 {
     // Temporary solution to cache products given the database of products
@@ -12,8 +16,8 @@ public class ExternalProductRepository : IProductRepository
     private Dictionary<int, Product> ProductCache { get; } = new();
     private DateTime CacheExpiration { get; set; } = DateTime.MinValue;
     private const int CacheDurationSeconds = 30;
-
     private const string ProductApiUrl = "https://dummyjson.com/products";
+    
     private readonly ILogger<ExternalProductRepository> _logger;
     
     public ExternalProductRepository(ILogger<ExternalProductRepository> logger)
@@ -50,6 +54,7 @@ public class ExternalProductRepository : IProductRepository
         
         if (!ProductCache.TryGetValue(id, out var product))
         {
+            _logger.LogWarning("ExternalProductRepository.GetProductByIdAsync() - Product with ID {ProductId} not found in the dictionary", id);
             return null;
         }
         return await Task.FromResult(product);
@@ -65,10 +70,12 @@ public class ExternalProductRepository : IProductRepository
         }
         
         _logger.LogInformation("Time since last cache refresh ({TimeSinceLastLoad} s) triggered reload", timeUntilCacheLoad.TotalSeconds);
+        
         var client = new HttpClient();
         var response = await client.GetAsync(ProductApiUrl);
         var json = await response.Content.ReadAsStringAsync();
         var products = JsonSerializer.Deserialize<ProductListJsonWrapper>(json);
+        
         if (products is null)
         {
             _logger.LogError("LoadProductsAsync(): Null deserialization from {Source}", ProductApiUrl);

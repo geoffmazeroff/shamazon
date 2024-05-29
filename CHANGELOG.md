@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### [0.12.0] - 2024-05-28
+### Changed
+- Improved error handling and logging
+
 ### [0.11.0] - 2024-05-28
 ### Deprecated
 - Privacy policy page is no longer available
