@@ -25,7 +25,8 @@ public class MockProductRepository : IProductRepository
   
     public async Task<List<ProductViewModel>> GetProductViewModelsAsync(string search = "")
     {
-        return await Task.FromResult(_demoProductViewModels);
+        var sortedProducts = _demoProductViewModels.OrderByDescending(p => p.Rating).ToList();
+        return await Task.FromResult(sortedProducts);
     }
 
     public async Task<Product?> GetProductByIdAsync(int id)

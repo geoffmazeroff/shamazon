@@ -41,7 +41,7 @@ public class ExternalProductRepository : IProductRepository
             products = products.Where(p => p.Title.Contains(search, StringComparison.OrdinalIgnoreCase));
         }
 
-        return products.ToList();
+        return products.OrderByDescending(p => p.Rating).ToList();
     }
 
     public async Task<Product?> GetProductByIdAsync(int id)

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### [0.10.0] - 2024-05-28
+### Changed
+- Product listing is sorted by product rating
+
 ### [0.9.0] - 2024-05-28
 ### Added
 - Alert if no results were returned from search

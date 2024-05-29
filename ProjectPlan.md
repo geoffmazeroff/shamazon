@@ -1,7 +1,6 @@
 # Project Plan
 
 ## To Do
-- Sort header returns by rating; add text on page to mention this
 - Address any compiler warnings or other IDE suggestions
 - Add error handling 
   - Handle missing field values on product details page
@@ -24,7 +23,7 @@
 - Deploy to Azure (manually)
 - Add a CI/CD pipeline (ideas: containerize, generate Software Bill of Materials (SBOM))
 - Add data cleaning on 3rd-party API data ingestion (e.g., `16GB` vs `16 GB`)
-- There are some business rules the UI could show (e.g., 5 in stock combined with a minimum buy of 24 means the user can't do anything)
+- There are some business rules the UI could show (e.g., 5 in stock combined with a minimum buy of 24 means the user can't do anything, the overall rating is precomputed but doesn't match the actual ratings)
 - Create Playwright tests
 - It would be useful if the 3rd-party had more granular endpoints (e.g., one to get the headers for a product and another to get the details)
 - Add an actual cache (e.g., Redis) for caching results from 3rd-party API (30 second expiry); used meta.updatedAt to determine when to refresh cache
@@ -50,18 +49,19 @@
 - Create a response model for the listing page
 - Build backend service to return hard-coded list for the index page
 - Create mock data service to generate full product data models
-- MVP details page should display all fields for a single product
+- Create MVP details page that displays all fields for a single product
 - Create image loader service
-- Modify mock product repo to take a constant JSON string with 2 products and convert that into two product models
+- Modify mock product repo to take a constant JSON string with 2 products and convert that into two product models (confirms JSON -> DTO works))
 - Map the JSON wrapper instance to the Product model the UI binds to
 - Build out service that communicates with 3rd-party API
 - Improve format of index page (thumbnails use Bootstrap class and are clickable)
 - Add navbar with search functionality to index page
 - Add cache duration of 30 seconds for product data to support faster load times
 - Implement search functionality 
-- Set up a Bootstrap carousel for the product images
+- Set up a Bootstrap carousel for the product images on the details page
 - Fix the carousel image size (too large)
 - Improve the visual layout of the product details page
 - Improve UX for when search returns no results
-- Handle product ID being missing from query string
+- Handle product ID being absent from query string
 - Handle product ID not being found in the product list
+- Sort header returns by rating; add text on page to mention this
