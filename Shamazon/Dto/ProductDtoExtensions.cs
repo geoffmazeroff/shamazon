@@ -72,14 +72,14 @@ public static class ProductDtoExtensions
             Brand = wrapper.Brand,
             Sku = wrapper.Sku,
             Weight = wrapper.Weight,
-            Dimensions = wrapper.Dimensions.FromDimensionDto(),
+            Dimensions = wrapper.Dimensions!.FromDimensionDto(),
             WarrantyInformation = wrapper.WarrantyInformation,
             ShippingInformation = wrapper.ShippingInformation,
             AvailabilityStatus = wrapper.AvailabilityStatus,
             Reviews = wrapper.Reviews!.Select(x => x.FromReviewDto()).ToList(),
             ReturnPolicy = wrapper.ReturnPolicy,
             MinimumOrderQuantity = wrapper.MinimumOrderQuantity,
-            Metadata = wrapper.Metadata.FromMetadataDto(),
+            Metadata = wrapper.Metadata!.FromMetadataDto(),
             ImageUrls = wrapper.ImageUrls,
             ThumbnailUrl = wrapper.ThumbnailUrl
         };

@@ -9,8 +9,8 @@ public class ExternalProductRepository : IProductRepository
 {
     // Temporary solution to cache products given the database of products
     // doesn't live on the same server as the application.
-    protected Dictionary<int, Product> ProductCache { get; } = new();
-    protected DateTime CacheExpiration { get; set; } = DateTime.MinValue;
+    private Dictionary<int, Product> ProductCache { get; } = new();
+    private DateTime CacheExpiration { get; set; } = DateTime.MinValue;
     private const int CacheDurationSeconds = 30;
 
     private const string ProductApiUrl = "https://dummyjson.com/products";
@@ -38,7 +38,7 @@ public class ExternalProductRepository : IProductRepository
         
         if (!string.IsNullOrWhiteSpace(search))
         {
-            products = products.Where(p => p.Title.Contains(search, StringComparison.OrdinalIgnoreCase));
+            products = products.Where(p => p.Title!.Contains(search, StringComparison.OrdinalIgnoreCase));
         }
 
         return products.OrderByDescending(p => p.Rating).ToList();
@@ -75,7 +75,7 @@ public class ExternalProductRepository : IProductRepository
             throw new InvalidOperationException("Failed to load products from external source.");
         }
 
-        // No products leaves the dictionary in a clean state. The UI will handle.
+        // Having no products leaves the dictionary in a clean state. The UI will handle.
         if (products.Products is null)
         {
             return;

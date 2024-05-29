@@ -48,7 +48,7 @@ public class ProductJsonWrapper
     public int Weight { get; set; }
     
     [JsonPropertyName("dimensions")]
-    public DimensionJsonWrapper Dimensions { get; set; }
+    public DimensionJsonWrapper? Dimensions { get; set; }
     
     [JsonPropertyName("warrantyInformation")]
     public string? WarrantyInformation { get; set; }
@@ -69,7 +69,7 @@ public class ProductJsonWrapper
     public int MinimumOrderQuantity { get; set; }
     
     [JsonPropertyName("meta")]
-    public ProductMetadataWrapper Metadata { get; set; }
+    public ProductMetadataWrapper? Metadata { get; set; }
     
     [JsonPropertyName("images")]
     public List<string> ImageUrls { get; set; } = [];

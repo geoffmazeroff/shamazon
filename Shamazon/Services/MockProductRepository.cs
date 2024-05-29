@@ -10,7 +10,7 @@ namespace Shamazon.Services;
 /// </summary>
 public class MockProductRepository : IProductRepository
 {
-    private List<ProductViewModel> _demoProductViewModels;
+    private List<ProductViewModel> _demoProductViewModels = new();
     private Product? _demoProduct;
     
     public MockProductRepository(IWebHostEnvironment env)
@@ -106,6 +106,10 @@ public class MockProductRepository : IProductRepository
         var jsonString = GetTwoProductsAsJson();
         var products = JsonSerializer.Deserialize<ProductListJsonWrapper>(jsonString);
 
+        if (products?.Products is null)
+        {
+          return;
+        }
         _demoProduct = products.Products.First().FromProductDto();
     }
     

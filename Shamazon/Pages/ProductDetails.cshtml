@@ -1,7 +1,7 @@
 @page "{id:int?}"
 @model Shamazon.Pages.ProductDetails
 @{
-    var title = "";
+    string? title;
     if (Model.Id != null && Model.Product is null)
     {
         title = "Product Not Found";
@@ -73,7 +73,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Dimensions</th>
-                        <td>@Model.Product.Dimensions.Width"W x @Model.Product.Dimensions.Height"H x @Model.Product.Dimensions.Depth"D</td>
+                        <td>@Model.Product.Dimensions!.Width"W x @Model.Product.Dimensions.Height"H x @Model.Product.Dimensions.Depth"D</td>
                     </tr>
                     <tr>
                         <th scope="row">Weight</th>
