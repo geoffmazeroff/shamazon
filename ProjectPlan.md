@@ -1,12 +1,5 @@
 # Project Plan
 
-## To Do
-- Add unit tests
-  - Not testing
-    - MockProductRepository (dummy data not used in production)
-    - ExternalImageLoader (should be an integration test given it touches files or HTTP)
-    - ProductDtoExtensions (could be replaced with something like AutoMapper in a future version)
-
 ## Future Items
 - Check Lighthouse for accessibility score (508 compliance)
 - Pagination for main page
@@ -66,3 +59,8 @@
 - Add more logging to the repository service
 - Figure out how to change injected repository service based on environment variable
 - Create content for README.md so that others can run this app locally (test on another machine that this indeed works)
+- Add unit tests
+  - Not testing
+    - MockProductRepository (dummy data not used in production)
+    - ExternalImageLoader (should be an integration test given it touches files or HTTP)
+    - ProductDtoExtensions (could be replaced with something like AutoMapper in a future version)

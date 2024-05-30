@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### [0.15.0] - 2024-05-29
+### [1.0.0] - 2024-05-30
 ### Added
 - Unit tests for external product repository and Razor page models
 

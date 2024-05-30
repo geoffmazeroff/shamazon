@@ -1,6 +1,5 @@
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -109,7 +108,7 @@ public class IndexTests
         
         var result = await _sut.OnGetAsync();
 
-        result.As<RedirectToPageResult>().PageName!.Contains("Error");
+        result.Should().BeOfType<RedirectToPageResult>().Which.PageName.Should().Be("/Error");
     }
     
     // OnGetAsync tests:
