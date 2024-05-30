@@ -70,11 +70,8 @@ public class ExternalProductRepository : IProductRepository
         }
         
         _logger.LogInformation("Time since last cache refresh ({TimeSinceLastLoad} s) triggered reload", timeUntilCacheLoad.TotalSeconds);
-        
-        var client = new HttpClient();
-        var response = await client.GetAsync(ProductApiUrl);
-        var json = await response.Content.ReadAsStringAsync();
-        var products = JsonSerializer.Deserialize<ProductListJsonWrapper>(json);
+
+        var products = await LoadAndDeserializeJsonAsync(ProductApiUrl);
         
         if (products is null)
         {
@@ -94,5 +91,13 @@ public class ExternalProductRepository : IProductRepository
         }
 
         CacheExpiration = DateTime.UtcNow + TimeSpan.FromSeconds(CacheDurationSeconds);
+    }
+    
+    protected virtual async Task<ProductListJsonWrapper?> LoadAndDeserializeJsonAsync(string url)
+    {
+        var client = new HttpClient();
+        var response = await client.GetAsync(url);
+        var json = response.Content.ReadAsStringAsync().Result;
+        return JsonSerializer.Deserialize<ProductListJsonWrapper>(json);
     }
 }

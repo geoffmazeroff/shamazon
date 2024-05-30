@@ -2,6 +2,10 @@
 
 ## To Do
 - Add unit tests
+  - Not testing
+    - MockProductRepository (dummy data not used in production)
+    - ExternalImageLoader (should be an integration test given it touches files or HTTP)
+    - ProductDtoExtensions (could be replaced with something like AutoMapper in a future version)
 
 ## Future Items
 - Check Lighthouse for accessibility score (508 compliance)

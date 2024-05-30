@@ -12,6 +12,6 @@ You will need the .NET 8 SDK installed on your machine. You can download it from
 
 To change between Production and Development environments, set the `ASPNETCORE_ENVIRONMENT` environment variable to `Production` or `Development` in `launchSettings.json`. From that file you can also change the port number.
 
-## Running tests
+## Running unit tests
 
-From the `./Shamazon.Tests/` directory, run `dotnet test`.
+From the `./Shamazon.Tests.Unit/` directory, run `dotnet test`.
