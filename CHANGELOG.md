@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### [0.15.0] - 2024-05-29
+### Added
+- Unit tests for external product repository and Razor page models
+
 ### [0.14.0] - 2024-05-29
 ### Added
 - Infrastructure for unit tests and instructions on running them in the README
