@@ -6,6 +6,7 @@
 ## Future Items
 - Check Lighthouse for accessibility score (508 compliance)
 - Pagination for main page
+- Spinner for main page while loading
 - Sort by {ColumnName}
 - Search by fields other than title and description
 - Currency setting (i.e., assume raw data is in USD then allow conversion to other currencies such as DKK)

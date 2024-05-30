@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### [0.14.0] - 2024-05-29
+### Added
+- Infrastructure for unit tests and instructions on running them in the README
+
 ### [0.13.0] - 2024-05-29
 ### Added
 - Instructions on running the app locally in the README file
