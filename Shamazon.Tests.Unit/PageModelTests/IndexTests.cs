@@ -1,5 +1,7 @@
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
@@ -98,6 +100,16 @@ public class IndexTests
         _logger.Received().Log(LogLevel.Error, Arg.Any<EventId>(), Arg.Any<object>(), Arg.Any<Exception>(),
             Arg.Any<Func<object, Exception, string>>());
         _sut.ProductViewModels[0].ThumbnailData.Should().BeEmpty();
+    }
+    
+    [Fact]
+    public async void OnGetAsync_LogsErrorAndRedirectsToErrorPage_IfRepoFails()
+    {
+        _repo.GetProductViewModelsAsync(Arg.Any<string>()).Throws(new Exception("Test"));
+        
+        var result = await _sut.OnGetAsync();
+
+        result.As<RedirectToPageResult>().PageName!.Contains("Error");
     }
     
     // OnGetAsync tests:
