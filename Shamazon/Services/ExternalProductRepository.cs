@@ -13,8 +13,8 @@ public class ExternalProductRepository : IProductRepository
 {
     // Temporary solution to cache products given the database of products
     // doesn't live on the same server as the application.
-    private Dictionary<int, Product> ProductCache { get; } = new();
-    private DateTime CacheExpiration { get; set; } = DateTime.MinValue;
+    protected Dictionary<int, Product> ProductCache { get; } = new();
+    protected DateTime CacheExpiration { get; set; } = DateTime.MinValue;
     private const int CacheDurationSeconds = 30;
     private const string ProductApiUrl = "https://dummyjson.com/products";
     
@@ -82,6 +82,7 @@ public class ExternalProductRepository : IProductRepository
         // Having no products leaves the dictionary in a clean state. The UI will handle.
         if (products.Products is null)
         {
+            ProductCache.Clear();
             return;
         }
         
