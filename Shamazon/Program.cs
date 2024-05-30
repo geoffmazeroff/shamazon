@@ -8,13 +8,19 @@ builder.Services.AddRazorPages();
 
 // Have the logger be the console
 builder.Logging.AddConsole();
-//builder.Services.AddSingleton<IProductRepository, MockProductRepository>();
-builder.Services.AddSingleton<IProductRepository, ExternalProductRepository>();
 builder.Services.AddSingleton<IImageLoader, ExternalImageLoader>();
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddSingleton<IProductRepository, MockProductRepository>();
+}
+else
+{
+    builder.Services.AddSingleton<IProductRepository, ExternalProductRepository>();
+}
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");

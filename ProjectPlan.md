@@ -2,11 +2,9 @@
 
 ## To Do
 - Add unit tests
-- Check Lighthouse for accessibility score (508 compliance)
-- Figure out how to change injected repository service based on environment
-- Create content for README.md so that others can run this app locally (test on another machine that this indeed works)
 
 ## Future Items
+- Check Lighthouse for accessibility score (508 compliance)
 - Pagination for main page
 - Sort by {ColumnName}
 - Search by fields other than title and description
@@ -61,3 +59,5 @@
 - Decision: Skip step of handling missing field values on product details page; missing information shows as blank which is good enough for MVP
 - Add try-catch logic around repository calls in page models; improve logging related to those exceptions
 - Add more logging to the repository service
+- Figure out how to change injected repository service based on environment variable
+- Create content for README.md so that others can run this app locally (test on another machine that this indeed works)

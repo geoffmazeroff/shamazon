@@ -1,5 +1,12 @@
 # CHANGELOG
 
+### [0.13.0] - 2024-05-29
+### Added
+- Instructions on running the app locally in the README file
+
+### Changed
+- Product repository is based on `ASPNETCORE_ENVIRONMENT` value
+
 ### [0.12.0] - 2024-05-28
 ### Changed
 - Improved error handling and logging
