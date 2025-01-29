@@ -35,7 +35,7 @@ public class IndexTests
         
         await _sut.OnGetAsync();
         
-        _repo.Received(1).GetProductViewModelsAsync(SearchString);
+        await _repo.Received(1).GetProductViewModelsAsync(SearchString);
     }
     
     [Fact]
@@ -61,8 +61,8 @@ public class IndexTests
         
         await _sut.OnGetAsync();
         
-        _imageLoader.Received(1).LoadImageAsync("abc");
-        _imageLoader.Received(1).LoadImageAsync("xyz");
+        await _imageLoader.Received(1).LoadImageAsync("abc");
+        await _imageLoader.Received(1).LoadImageAsync("xyz");
     }
     
     [Fact]
@@ -77,7 +77,7 @@ public class IndexTests
         
         await _sut.OnGetAsync();
         
-        _imageLoader.Received(0).LoadImageAsync(Arg.Any<string>());
+        await _imageLoader.Received(0).LoadImageAsync(Arg.Any<string>());
     }
     
     [Fact]
@@ -97,7 +97,7 @@ public class IndexTests
         await _sut.OnGetAsync();
         
         _logger.Received().Log(LogLevel.Error, Arg.Any<EventId>(), Arg.Any<object>(), Arg.Any<Exception>(),
-            Arg.Any<Func<object, Exception, string>>());
+            Arg.Any<Func<object, Exception?, string>>());
         _sut.ProductViewModels[0].ThumbnailData.Should().BeEmpty();
     }
     

@@ -32,7 +32,7 @@ public class ProductDetailsTests
         await _sut.OnGetAsync(null);
         
         _logger.Received().Log(LogLevel.Information, Arg.Any<EventId>(), Arg.Any<object>(), Arg.Any<Exception>(),
-            Arg.Any<Func<object, Exception, string>>());
+            Arg.Any<Func<object, Exception?, string>>());
         
         Assert.Null(_sut.Product);
     }
@@ -46,9 +46,9 @@ public class ProductDetailsTests
         
         await _sut.OnGetAsync(productId);
         
-        _repo.Received(1).GetProductByIdAsync(productId);
+        await _repo.Received(1).GetProductByIdAsync(productId);
         _sut.Id.Should().Be(productId);
-        _sut.Product.GetHashCode().Should().Be(expectedProduct.GetHashCode());
+        _sut.Product?.GetHashCode().Should().Be(expectedProduct.GetHashCode());
     }
     
     [Fact]
@@ -60,7 +60,7 @@ public class ProductDetailsTests
         var result = await _sut.OnGetAsync(productId);
         
         _logger.Received().Log(LogLevel.Error, Arg.Any<EventId>(), Arg.Any<object>(), Arg.Any<Exception>(),
-            Arg.Any<Func<object, Exception, string>>());
+            Arg.Any<Func<object, Exception?, string>>());
         result.Should().BeOfType<RedirectToPageResult>().Which.PageName.Should().Be("/Error");
     }
     
@@ -68,7 +68,7 @@ public class ProductDetailsTests
     public async void OnGetAsync_ProductSetToNull_WhenRepoReturnsNullProduct()
     {
         const int productId = 45;
-        _repo.GetProductByIdAsync(productId).Returns((Product)null);
+        _repo.GetProductByIdAsync(productId).Returns((Product?)null);
         
         await _sut.OnGetAsync(productId);
 

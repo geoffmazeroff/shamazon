@@ -57,7 +57,7 @@ public class ExternalProductRepositoryTests
         var product = await _sut.GetProductByIdAsync(1);
         
         product.Should().NotBeNull();
-        product!.Id.Should().Be(1);
+        product.Id.Should().Be(1);
     }
     
     [Fact]
@@ -156,7 +156,7 @@ public class ExternalProductRepositoryTests
         
         exceptionThrown.Should().BeTrue();
         _logger.Received().Log(LogLevel.Error, Arg.Any<EventId>(), Arg.Any<object>(), Arg.Any<Exception>(),
-            Arg.Any<Func<object, Exception, string>>());
+            Arg.Any<Func<object, Exception?, string>>());
     }
    
     private static ProductListJsonWrapper CreateThreeDummyProducts()
@@ -199,12 +199,10 @@ public class ExternalProductRepositoryTests
 
 public class ExternalProductRepoTestHelper : ExternalProductRepository
 {
-    private readonly ProductListJsonWrapper _listWrapperToBeMockLoaded;
-    
     public ILogger<ExternalProductRepoTestHelper> Logger { get; }
     public ProductListJsonWrapper? ProductJsonToReturn { get; set; }
 
-    public bool LoadShouldThrowException { get; set; } = false;
+    public bool LoadShouldThrowException { get; set; }
     
     public ExternalProductRepoTestHelper(ILogger<ExternalProductRepoTestHelper> logger) : base(logger)
     {
@@ -225,9 +223,9 @@ public class ExternalProductRepoTestHelper : ExternalProductRepository
     // Regardless, I'm leaving this here to show how one would unit test this scenario.
     public DateTime CacheExpirationSeam
     {
-        get => base.CacheExpiration;
-        set => base.CacheExpiration = value;
+        get => CacheExpiration;
+        set => CacheExpiration = value;
     }
 
-    public Dictionary<int, Product> ProductCacheSeam => base.ProductCache;
+    public Dictionary<int, Product> ProductCacheSeam => ProductCache;
 }
