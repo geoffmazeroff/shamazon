@@ -18,7 +18,7 @@ public class ExternalProductRepositoryTests
     }
     
     [Fact]
-    public async void GetProductViewModelsAsync_ReturnsAListOfItems_WhenNoSearchCriteriaProvided()
+    public async Task GetProductViewModelsAsync_ReturnsAListOfItems_WhenNoSearchCriteriaProvided()
     {
         _sut.ProductJsonToReturn = CreateThreeDummyProducts();
 
@@ -30,7 +30,7 @@ public class ExternalProductRepositoryTests
     [Theory]
     [InlineData("")]
     [InlineData("Bob")]
-    public async void GetProductViewModelsAsync_ReturnsAListOfItems_WhenSearchCriteriaIsEmpty(string search)
+    public async Task GetProductViewModelsAsync_ReturnsAListOfItems_WhenSearchCriteriaIsEmpty(string search)
     {
         _sut.ProductJsonToReturn = CreateThreeDummyProducts();
 
@@ -40,7 +40,7 @@ public class ExternalProductRepositoryTests
     }
     
     [Fact]
-    public async void GetProductViewModelsAsync_ReturnsAFilteredListOfItems_WhenSearchCriteriaProvided()
+    public async Task GetProductViewModelsAsync_ReturnsAFilteredListOfItems_WhenSearchCriteriaProvided()
     {
         _sut.ProductJsonToReturn = CreateThreeDummyProducts();
 
@@ -50,7 +50,7 @@ public class ExternalProductRepositoryTests
     }
     
     [Fact]
-    public async void GetProductByIdAsync_ReturnsAProduct_WhenProductShouldExist()
+    public async Task GetProductByIdAsync_ReturnsAProduct_WhenProductShouldExist()
     {
         _sut.ProductJsonToReturn = CreateThreeDummyProducts();
 
@@ -61,7 +61,7 @@ public class ExternalProductRepositoryTests
     }
     
     [Fact]
-    public async void GetProductByIdAsync_ReturnsNull_WhenProductDoesNotExist()
+    public async Task GetProductByIdAsync_ReturnsNull_WhenProductDoesNotExist()
     {
         _sut.ProductJsonToReturn = CreateThreeDummyProducts();
 
@@ -71,7 +71,7 @@ public class ExternalProductRepositoryTests
     }
     
     [Fact]
-    public async void LoadProductsAsync_DoesNotUpdateTheCache_WhenCacheHasNotExpired()
+    public async Task LoadProductsAsync_DoesNotUpdateTheCache_WhenCacheHasNotExpired()
     {
         // One cached item, and cache expires 15 minutes from now
         const int cachedProductId = 1;
@@ -85,7 +85,7 @@ public class ExternalProductRepositoryTests
     }
     
     [Fact]
-    public async void LoadProductsAsync_UpdatesTheCache_WhenCacheHasExpired()
+    public async Task LoadProductsAsync_UpdatesTheCache_WhenCacheHasExpired()
     {
         // One cached item, and cache expired 15 minutes ago
         const int cachedProductId = 1;
@@ -99,7 +99,7 @@ public class ExternalProductRepositoryTests
     }
     
     [Fact]
-    public async void LoadProductsAsync_ResetsTheCache_WhenThereAreNoProductsToAssign()
+    public async Task LoadProductsAsync_ResetsTheCache_WhenThereAreNoProductsToAssign()
     {
         // One cached item, and cache expired 15 minutes ago
         const int cachedProductId = 1;
@@ -116,7 +116,7 @@ public class ExternalProductRepositoryTests
     }
     
     [Fact]
-    public async void LoadProductsAsync_ThrowsAnException_WhenLoadAndSerializeOperationThrows()
+    public async Task LoadProductsAsync_ThrowsAnException_WhenLoadAndSerializeOperationThrows()
     {
         // One cached item, and cache expired 15 minutes ago
         const int cachedProductId = 1;
@@ -137,7 +137,7 @@ public class ExternalProductRepositoryTests
     }
     
     [Fact]
-    public async void LoadProductsAsync_LogsErrorAndThrowsAnException_WhenLoadedListIsNull()
+    public async Task LoadProductsAsync_LogsErrorAndThrowsAnException_WhenLoadedListIsNull()
     {
         // One cached item, and cache expired 15 minutes ago
         const int cachedProductId = 1;

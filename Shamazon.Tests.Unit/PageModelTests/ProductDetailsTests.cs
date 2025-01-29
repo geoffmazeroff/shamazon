@@ -27,7 +27,7 @@ public class ProductDetailsTests
     }
     
     [Fact]
-    public async void OnGetAsync_LogsInfoAndSetsProductToNull_WhenIdIsNull()
+    public async Task OnGetAsync_LogsInfoAndSetsProductToNull_WhenIdIsNull()
     {
         await _sut.OnGetAsync(null);
         
@@ -38,7 +38,7 @@ public class ProductDetailsTests
     }
     
     [Fact]
-    public async void OnGetAsync_IdSetAndProductUpdated_WhenValidIdProvided()
+    public async Task OnGetAsync_IdSetAndProductUpdated_WhenValidIdProvided()
     {
         const int productId = 45;
         var expectedProduct = new Product();
@@ -52,7 +52,7 @@ public class ProductDetailsTests
     }
     
     [Fact]
-    public async void OnGetAsync_LogsErrorAndRedirectsToErrorPage_WhenRepoThrowsException()
+    public async Task OnGetAsync_LogsErrorAndRedirectsToErrorPage_WhenRepoThrowsException()
     {
         const int productId = 45;
         _repo.GetProductByIdAsync(productId).Throws(new Exception("Test exception"));
@@ -65,7 +65,7 @@ public class ProductDetailsTests
     }
     
     [Fact]
-    public async void OnGetAsync_ProductSetToNull_WhenRepoReturnsNullProduct()
+    public async Task OnGetAsync_ProductSetToNull_WhenRepoReturnsNullProduct()
     {
         const int productId = 45;
         _repo.GetProductByIdAsync(productId).Returns((Product?)null);

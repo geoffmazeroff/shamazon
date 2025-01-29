@@ -29,7 +29,7 @@ public class IndexTests
     }
     
     [Fact]
-    public async void OnGetAsync_CallsRepoWithSearchString()
+    public async Task OnGetAsync_CallsRepoWithSearchString()
     {
         _repo.GetProductViewModelsAsync(SearchString).Returns([]);
         
@@ -39,7 +39,7 @@ public class IndexTests
     }
     
     [Fact]
-    public async void OnGetAsync_SetsProductViewModels_WhenRepoReturnsData()
+    public async Task OnGetAsync_SetsProductViewModels_WhenRepoReturnsData()
     {
         var products = new List<ProductViewModel> { new(), new() };
         _repo.GetProductViewModelsAsync(Arg.Any<string>()).Returns(products);
@@ -50,7 +50,7 @@ public class IndexTests
     }
     
     [Fact]
-    public async void OnGetAsync_UsesImageLoaderToSetThumbnailData_WhenRepoReturnsData()
+    public async Task OnGetAsync_UsesImageLoaderToSetThumbnailData_WhenRepoReturnsData()
     {
         var products = new List<ProductViewModel>
         {
@@ -66,7 +66,7 @@ public class IndexTests
     }
     
     [Fact]
-    public async void OnGetAsync_DoesNotUseImageLoaderToSetThumbnailData_IfThumbnailDataAlreadyPresent()
+    public async Task OnGetAsync_DoesNotUseImageLoaderToSetThumbnailData_IfThumbnailDataAlreadyPresent()
     {
         var products = new List<ProductViewModel>
         {
@@ -81,7 +81,7 @@ public class IndexTests
     }
     
     [Fact]
-    public async void OnGetAsync_LogsErrorAndSetsThumbnailDataToEmptyArray_IfImageLoaderFails()
+    public async Task OnGetAsync_LogsErrorAndSetsThumbnailDataToEmptyArray_IfImageLoaderFails()
     {
         var products = new List<ProductViewModel>
         {
@@ -102,7 +102,7 @@ public class IndexTests
     }
     
     [Fact]
-    public async void OnGetAsync_LogsErrorAndRedirectsToErrorPage_IfRepoFails()
+    public async Task OnGetAsync_LogsErrorAndRedirectsToErrorPage_IfRepoFails()
     {
         _repo.GetProductViewModelsAsync(Arg.Any<string>()).Throws(new Exception("Test"));
         
